@@ -26,7 +26,7 @@ typedef struct _script
 	float width;
 } script;
 
-script mod[21];
+script mod[6];
 
 int item_highlighted = 1;
 int mod_count = 0; 
@@ -44,15 +44,15 @@ void Init(void)
 	// Add you scripts to these three arrays (file, name, enabled (always = 0)) and then increment the mod_count if needed.
 
 	// The file name of the script
-	mod[1].file = "xyz_coords_example";
-	mod[2].file = "";
+	mod[1].file = "brucie_garage";
+	mod[2].file = "xyz_coords_example";
 	mod[3].file = "";
 	mod[4].file = "";
 	mod[5].file = "";
 
 	// The name to display
-	mod[1].name = "XYZ Coords Example";
-	mod[2].name = "";
+	mod[1].name = "Brucies Garage Shop Mod";
+	mod[2].name = "XYZ Coords Example";
 	mod[3].name = "";
 	mod[4].name = "";
 	mod[5].name = "";
@@ -65,7 +65,7 @@ void Init(void)
 	mod[5].enabled = 0;
 
 	// How many mods there are.
-	mod_count = 1;
+	mod_count = 2;
 	
 	// End script config
 	// No more editing needed below this point if all your doing is adding scripts...
