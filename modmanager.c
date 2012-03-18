@@ -45,9 +45,9 @@ void Init(void)
 
 	// The file name of the script
 	mod[1].file = "brucie_garage";
-	mod[2].file = "xyz_coords";
-	mod[3].file = "button_input";
-	mod[4].file = "open_garages";
+	mod[2].file = "xyz_coords_example";
+	mod[3].file = "button_input_example";
+	mod[4].file = "open_garages_example";
 	mod[5].file = "teleport_example";
 	mod[6].file = "";
 
