@@ -1,7 +1,11 @@
 /**
  * GTAIV ModManager V1
  *
+ * This file is from: https://bitbucket.org/ThreeSocks/gtaiv-modmanager/
+ *
  * By Three-Socks
+ *
+ * Important: Make sure you replace the natives.h with your compiler includes. The one inside the /inc folder. It contains a fix that is needed for modmanager to compile correctly.
  *
  */
 
@@ -45,22 +49,20 @@ void Init(void)
 
 	// The file name of the script
 	mod[1].file = "brucie_garage";
-	mod[2].file = "xyz_coords_example";
+	mod[2].file = "xyzh_coords_example";
 	mod[3].file = "button_input_example";
-	mod[4].file = "open_garages_example";
-	mod[5].file = "teleport_example";
-	mod[6].file = "";
+	mod[4].file = "teleport_example";
+	mod[5].file = "";
 
 	// The name to display
 	mod[1].name = "Brucies Garage Shop Mod";
-	mod[2].name = "XYZ Coords Example";
+	mod[2].name = "XYZH Coords Example";
 	mod[3].name = "Button Input Example";
-	mod[4].name = "Open Garages Example";
-	mod[5].name = "Teleport to Brucie's Garage";
-	mod[6].name = "";
+	mod[4].name = "Teleport to Brucie's Garage";
+	mod[5].name = "";
 
-	// How many mods there are.
-	mod_count = 5;
+	// How many scirpts there are.
+	mod_count = 4;
 	
 	// End script config
 	// No more editing needed below this point if all your doing is adding scripts...
