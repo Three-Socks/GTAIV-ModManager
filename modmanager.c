@@ -30,7 +30,7 @@ typedef struct _script
 	float width;
 } script;
 
-script mod[21];
+script mod[50];
 
 int item_highlighted = 1;
 int mod_count = 0; 
@@ -38,14 +38,14 @@ float edc_width = 0;
 float Ipos_y, start_pos_y, title_y, title_width, title_height;
 uint title_r = 253, title_g = 160, title_b = 35;
 
-float pos_x = 0.1650, width = 0.4000, height = 0.4000;
+float pos_x = 0.2000, width = 0.4000, height = 0.4000;
 uint r, g, b, a;
 
 void Init(void)
 {
 
 	// Script config
-	// Add you scripts to these two arrays (file, name) and then increment the mod_count if needed.
+	// Add you scripts to these two arrays (file, name) and then change the mod_count.
 
 	// The file name of the script
 	mod[1].file = "garage";
@@ -60,7 +60,7 @@ void Init(void)
 	mod[10].file = "";
 
 	// The name to display
-	mod[1].name = "Garage Shop Mod";
+	mod[1].name = "Garage Mod Shop";
 	mod[2].name = "XYZH Coords Example";
 	mod[3].name = "Button Input Example";
 	mod[4].name = "Open Garages Example";
@@ -225,7 +225,7 @@ void DoMenu(void)
 	DRAW_FRONTEND_HELPER_TEXT("CONFIRM", "INPUT_F_ACCEPT", 0);
 
 	DrawMenu();
-	draw_title(0.5000, title_y, title_width, title_height, title_r, title_g, title_b, 255, "SCO ModManager");
+	draw_title(0.5000, title_y, title_width, title_height, title_r, title_g, title_b, 255, "ModManager 1.1");
 
 	if (IS_BUTTON_JUST_PRESSED(0, BUTTON_X))
 	{
