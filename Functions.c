@@ -54,13 +54,3 @@ float draw_text(char *gxtName, float x, float y, char *val)
 	DISPLAY_TEXT_WITH_LITERAL_STRING(x, y, gxtName, val);
 	return result;
 }
-
-void draw_number(char *gxtName, float x, float y, int val)
-{
-	DISPLAY_TEXT_WITH_NUMBER(x, y, gxtName, val);
-}
-
-void draw_float(char *gxtName, float x, float y, float val)
-{
-	DISPLAY_TEXT_WITH_FLOAT(x, y, gxtName, val, 4);
-}
