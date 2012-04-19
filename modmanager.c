@@ -15,8 +15,31 @@
 #include <types.h>
 #include <consts.h>
 
-#include "Locals.h"
 #include "Functions.c"
+
+#define BUTTON_X  0x10
+#define BUTTON_O  0x11
+#define BUTTON_DPAD_UP  0x8
+#define BUTTON_DPAD_DOWN  0x9
+
+typedef struct _script
+{
+	char *file;
+	char *name;
+	int enabled;
+	float width;
+} script;
+
+script mod[50];
+
+int item_highlighted = 1;
+int mod_count = 0; 
+float edc_width = 0;
+float Ipos_y, start_pos_y, title_y, title_width, title_height;
+uint title_r = 253, title_g = 160, title_b = 35;
+
+float pos_x = 0.2000, width = 0.4000, height = 0.4000;
+uint r, g, b, a;
 
 void Init(void)
 {
@@ -57,9 +80,9 @@ void Init(void)
 	int I;
 	for (I = 1; I < (mod_count + 1); I++)
 	{
-		if (GET_NUMBER_OF_INSTANCES_OF_STREAMED_SCRIPT(mod[I].file) >= 1)
+		if ((GET_NUMBER_OF_INSTANCES_OF_STREAMED_SCRIPT(mod[I].file)) >= 1)
 		{
-			mod[I].enabled = true;
+			mod[I].enabled = 2;
 		}
 	}
 
@@ -79,7 +102,7 @@ void Init(void)
 		title_height = 0.9830;
 	}
 
-	start_pos_y = title_y + space_from_title;
+	start_pos_y = title_y + 0.1300;
 }
 
 void DrawMenu(void)
@@ -87,35 +110,35 @@ void DrawMenu(void)
 	Ipos_y = start_pos_y;
 
 	if (IS_BUTTON_JUST_PRESSED(0, BUTTON_DPAD_DOWN))
-	{
+	{	
 
 		if (item_highlighted == mod_count)
 		{
 			item_highlighted = 1;
-			start_pos_y = title_y + space_from_title;
+			start_pos_y = title_y + 0.1300;
 		}
 		else
 		{
 			item_highlighted++;
 		}
-
+		
 		if (item_highlighted >= 13)
 		{
-			start_pos_y -= menu_spacing;
+			start_pos_y -= 0.0400;
 		}
 
 	}
 
 	if (IS_BUTTON_JUST_PRESSED(0, BUTTON_DPAD_UP))
 	{
-
+	
 		if (item_highlighted == 1)
 		{
 			item_highlighted = mod_count;
 
 			if (mod_count >= 13)
 			{
-				start_pos_y = (title_y + space_from_title) - ((mod_count - 12) * menu_spacing);
+				start_pos_y = (title_y + 0.1300) - ((mod_count - 12) * 0.0400);
 			}
 		}
 		else
@@ -125,7 +148,7 @@ void DrawMenu(void)
 
 		if (item_highlighted >= 13)
 		{
-			start_pos_y += menu_spacing;
+			start_pos_y += 0.0400;
 		}
 
 	}
@@ -137,9 +160,9 @@ void DrawMenu(void)
 		g = 255;
 		b = 255;
 		a = 255;
-		Ipos_y = Ipos_y + menu_spacing;
+		Ipos_y = Ipos_y + 0.0400;
 
-		if (Ipos_y < title_y + space_from_title)
+		if (Ipos_y < title_y + 0.1300)
 		{
 			a = 0;
 		}
@@ -151,12 +174,12 @@ void DrawMenu(void)
 			b = 35;
 		}
 
-		set_up_draw(0, text_width, text_height, r, g, b, a);
-		float strtext_width = draw_text("STRING", menu_pos_x, Ipos_y, mod[I].name);
+		set_up_draw(0, width, height, r, g, b, a);
+		float strwidth = draw_text("STRING", pos_x, Ipos_y, mod[I].name);
 
 		if (edc_width == 0)
 		{
-			mod[I].width = strtext_width;
+			mod[I].width = strwidth;
 			
 			if (I == mod_count)
 			{
@@ -173,15 +196,15 @@ void DrawMenu(void)
 		}
 		else
 		{
-			if (mod[I].enabled == true)
+			if (mod[I].enabled == 2)
 			{
-				set_up_draw(0, text_width, text_height, 253, 160, 35, a);
-				draw_text("STRING", menu_pos_x + edc_width + 0.0900, Ipos_y, "Enabled");
+				set_up_draw(0, width, height, 253, 160, 35, a);
+				draw_text("STRING", pos_x + edc_width + 0.0900, Ipos_y, "Enabled");
 			}
 			else
 			{
-				set_up_draw(0, text_width, text_height, 255, 255, 255, a);
-				draw_text("STRING", menu_pos_x + edc_width + 0.0900, Ipos_y, "Disabled");
+				set_up_draw(0, width, height, 255, 255, 255, a);
+				draw_text("STRING", pos_x + edc_width + 0.0900, Ipos_y, "Disabled");
 			}
 		}
 
@@ -206,9 +229,9 @@ void DoMenu(void)
 
 	if (IS_BUTTON_JUST_PRESSED(0, BUTTON_X))
 	{
-		if (mod[item_highlighted].enabled == true)
+		if (mod[item_highlighted].enabled == 2)
 		{
-			mod[item_highlighted].enabled = false;
+			mod[item_highlighted].enabled = 0;
 			TERMINATE_ALL_SCRIPTS_WITH_THIS_NAME(mod[item_highlighted].file);
 		}
 		else if (DOES_SCRIPT_EXIST(mod[item_highlighted].file))
@@ -216,17 +239,18 @@ void DoMenu(void)
 			REQUEST_SCRIPT(mod[item_highlighted].file);
 			while (!HAS_SCRIPT_LOADED(mod[item_highlighted].file))
 			{
+				REQUEST_SCRIPT(mod[item_highlighted].file);
 				WAIT(0);
 			}
 			START_NEW_SCRIPT(mod[item_highlighted].file, 1024);
 			MARK_SCRIPT_AS_NO_LONGER_NEEDED(mod[item_highlighted].file);
-
+			
 			int I;
 			for (I = 1; I < (mod_count + 1); I++)
 			{
-				if (GET_NUMBER_OF_INSTANCES_OF_STREAMED_SCRIPT(mod[I].file) >= 1)
+				if ((GET_NUMBER_OF_INSTANCES_OF_STREAMED_SCRIPT(mod[I].file)) >= 1)
 				{
-					mod[I].enabled = true;
+					mod[I].enabled = 2;
 				}
 			}
 		}
