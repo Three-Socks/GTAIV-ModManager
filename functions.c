@@ -5,7 +5,7 @@ void draw_title(float x, float y, float width, float height, uint r, uint g, uin
 	SET_TEXT_DROPSHADOW(0, 0, 0, 0, 255);
 	SET_TEXT_EDGE(1, 0, 0, 0, 255);
 	SET_TEXT_PROPORTIONAL(1);
-	SET_TEXT_WRAP(0.00000000, 1.00000000);	
+	SET_TEXT_WRAP(0.0000, 1.0000);	
 
 	SET_TEXT_COLOUR(r, g, b, a);
 	SET_TEXT_SCALE(width, height);
