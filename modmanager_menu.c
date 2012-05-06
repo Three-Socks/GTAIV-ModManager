@@ -53,15 +53,25 @@ void MultiLevel_Init(void)
 		mod[1].name = "Garage Mod Shop 2.0";
 		mod[2].name = "Garage Anywhere (R1+UP)";
 		mod[3].name = "Teleport to Brucies Garage";
-		mod[4].name = "Teleport to Northwood Scrap Yard";
+		mod[4].name = "Teleport to Park Station Garage";
+		mod[5].name = "Teleport to Bohan Garage";
+		mod[6].name = "Teleport to Scrap Yard Garage";
+		mod[7].name = "Teleport to Meat Station Garage";
+		mod[8].name = "Teleport to Showroom Garage";
+		mod[9].name = "Teleport to Tudor Garage";
 
 		// The file name of the script
 		mod[1].file = "garage";
 		mod[2].file = "garage_anywhere";
-		mod[3].file = "teleport_example";
-		mod[4].file = "teleport_scrapyard";
-		
-		mod_count = 4;
+		mod[3].file = "garage_brucie";
+		mod[4].file = "garage_park";
+		mod[5].file = "garage_bohan";
+		mod[6].file = "garage_scrapyard";
+		mod[7].file = "garage_meat";
+		mod[8].file = "garage_showroom";
+		mod[9].file = "garage_tudor";
+
+		mod_count = 9;
 	}
 	else if (item_highlighted == 4)
 	{
@@ -286,7 +296,6 @@ void DoMenu(void)
 		}
 		else
 		{
-			UNPAUSE_GAME();
 			SET_PLAYER_CONTROL(GetPlayerIndex(), true);
 			TERMINATE_ALL_SCRIPTS_WITH_THIS_NAME("modmanager");
 			TERMINATE_THIS_SCRIPT();
@@ -316,7 +325,6 @@ void main(void)
 		WAIT(0);
 		if (IS_SCREEN_FADED_OUT())
 		{
-			UNPAUSE_GAME();
 			SET_PLAYER_CONTROL(GetPlayerIndex(), true);
 			TERMINATE_ALL_SCRIPTS_WITH_THIS_NAME("modmanager");
 			TERMINATE_THIS_SCRIPT();

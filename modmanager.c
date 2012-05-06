@@ -25,7 +25,7 @@ void DoModManager(void)
 		LOAD_TEXT_FONT(6);
 	}
 	HIDE_HUD_AND_RADAR_THIS_FRAME();
-	DRAW_RECT(0.5000, 0.5000, 1.0000, 1.0000, 0, 0, 0, 255);
+	DRAW_RECT(0.5000, 0.5000, 1.0000, 1.0000, 0, 0, 0, 167);
 	INIT_FRONTEND_HELPER_TEXT();
 	DRAW_FRONTEND_HELPER_TEXT("LEAVE", "INPUT_F_CANCEL", 0);
 	DRAW_FRONTEND_HELPER_TEXT("CONFIRM", "INPUT_F_ACCEPT", 0);
@@ -46,10 +46,10 @@ void DoModManager(void)
 
 void main(void)
 {
-	PAUSE_GAME();
+	SET_PLAYER_CONTROL(GetPlayerIndex(), false);
+
 	CLEAR_PRINTS();
 	CLEAR_HELP();
-	SET_PLAYER_CONTROL(GetPlayerIndex(), false);
 
 	REQUEST_SCRIPT("modmanager_menu");
 	while (!HAS_SCRIPT_LOADED("modmanager_menu"))
