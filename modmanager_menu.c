@@ -26,21 +26,17 @@ void MainLevel_Init(void)
 
 	// The name to display
 	mod[1].name = "Garage Mod Shop";
-	mod[2].name = "Disable Police Patrol at Airport";
-	mod[3].name = "Skylift Pick Up";
-	mod[4].name = "Developer Tools";
-	mod[5].name = "Example Mods";
+	mod[2].name = "Developer Tools";
+	mod[3].name = "Example Mods";
 
 	// The file name of the script. Use mod[#].multi to define another level.
 	mod[1].multi = true;
-	mod[2].file = "disable_airportpol";
-	mod[3].file = "skylift_pickup";
-	mod[4].multi = true;
-	mod[5].multi = true;
+	mod[2].multi = true;
+	mod[3].multi = true;
 
 	// How many scirpts there are.
-	mod_count = 5;
-	
+	mod_count = 3;
+
 }
 
 // Script config continued...
@@ -73,7 +69,7 @@ void MultiLevel_Init(void)
 
 		mod_count = 9;
 	}
-	else if (item_highlighted == 4)
+	else if (item_highlighted == 2)
 	{
 		mod[1].name = "XYZH Coords Example";
 
@@ -81,17 +77,21 @@ void MultiLevel_Init(void)
 
 		mod_count = 1;
 	}
-	else if (item_highlighted == 5)
+	else if (item_highlighted == 3)
 	{
-		mod[1].name = "Button Input Example";
-		mod[2].name = "Open Garages Example";
-		mod[3].name = "Vehicle Example";
+		mod[1].name = "Disable Police Patrol at Airport";
+		mod[2].name = "Skylift Vehicle Pick Up (L3)";
+		mod[3].name = "Button Input Example";
+		mod[4].name = "Open Garages Example";
+		mod[5].name = "Vehicle Example";
 
-		mod[1].file = "button_input_example";
-		mod[2].file = "open_garages_example";		
-		mod[3].file = "vehicle_example";
+		mod[1].file = "disable_airportpol";
+		mod[2].file = "skylift_pickup";
+		mod[3].file = "button_input_example";
+		mod[4].file = "open_garages_example";		
+		mod[5].file = "vehicle_example";
 
-		mod_count = 3;
+		mod_count = 5;
 	}
 	
 	// End script config
