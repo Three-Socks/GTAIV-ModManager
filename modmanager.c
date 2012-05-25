@@ -16,14 +16,12 @@
 #include <types.h>
 #include <consts.h>
 
+#define PC
+
 #include "functions.c"
 
 void DoModManager(void)
 {
-	if (!IS_FONT_LOADED(6))
-	{
-		LOAD_TEXT_FONT(6);
-	}
 	HIDE_HUD_AND_RADAR_THIS_FRAME();
 	DRAW_RECT(0.5000, 0.5000, 1.0000, 1.0000, 0, 0, 0, 167);
 	INIT_FRONTEND_HELPER_TEXT();

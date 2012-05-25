@@ -1,6 +1,18 @@
 void draw_title(float x, float y, float width, float height, uint r, uint g, uint b, uint a, char *val)
 {
+#ifdef PC
+	if (!IS_FONT_LOADED(7))
+	{
+		LOAD_TEXT_FONT(7);
+	}
+	SET_TEXT_FONT(7);
+#else
+	if (!IS_FONT_LOADED(6))
+	{
+		LOAD_TEXT_FONT(6);
+	}
 	SET_TEXT_FONT(6);
+#endif
 	SET_TEXT_BACKGROUND(0);
 	SET_TEXT_DROPSHADOW(0, 0, 0, 0, 255);
 	SET_TEXT_EDGE(1, 0, 0, 0, 255);

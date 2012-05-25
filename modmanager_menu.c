@@ -121,7 +121,7 @@ void DrawMenu(void)
 {
 	Ipos_y = start_pos_y;
 
-	if (IS_BUTTON_JUST_PRESSED(0, BUTTON_DPAD_DOWN))
+	if (IS_BUTTON_JUST_PRESSED(0, BUTTON_DPAD_DOWN) || IS_GAME_KEYBOARD_KEY_JUST_PRESSED(208))
 	{
 		if (item_highlighted == mod_count)
 		{
@@ -139,7 +139,7 @@ void DrawMenu(void)
 		}
 	}
 
-	if (IS_BUTTON_JUST_PRESSED(0, BUTTON_DPAD_UP))
+	if (IS_BUTTON_JUST_PRESSED(0, BUTTON_DPAD_UP) || IS_GAME_KEYBOARD_KEY_JUST_PRESSED(200))
 	{
 		if (item_highlighted == 1)
 		{
@@ -226,7 +226,7 @@ void DoMenu(void)
 {
 	DrawMenu();
 
-	if (IS_BUTTON_JUST_PRESSED(0, BUTTON_X))
+	if (IS_BUTTON_JUST_PRESSED(0, BUTTON_X) || IS_GAME_KEYBOARD_KEY_JUST_PRESSED(28))
 	{
 		if (!inMulti && mod[item_highlighted].multi)
 		{
@@ -273,7 +273,7 @@ void DoMenu(void)
 		}
 	}
 
-	if (IS_BUTTON_JUST_PRESSED(0, BUTTON_O))
+	if (IS_BUTTON_JUST_PRESSED(0, BUTTON_O) || IS_GAME_KEYBOARD_KEY_JUST_PRESSED(14))
 	{
 		if (inMulti)
 		{
