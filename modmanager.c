@@ -16,7 +16,7 @@
 #include <types.h>
 #include <consts.h>
 
-#define PC
+//#define PC
 
 #include "functions.c"
 
