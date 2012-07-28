@@ -25,17 +25,19 @@ void MainLevel_Init(void)
 	// Add you scripts to these two arrays (file, name) and then change the mod_count.
 
 	// The name to display
-	mod[1].name = "Garage Mod Shop";
-	mod[2].name = "Developer Tools";
-	mod[3].name = "Example Mods";
+	mod[1].name = "Three-Socks Trainer";
+	mod[2].name = "Garage Mod Shop";
+	mod[3].name = "Developer Tools";
+	mod[4].name = "Example Mods";
 
 	// The file name of the script. Use mod[#].multi to define another level.
-	mod[1].multi = true;
+	mod[1].file = "3s_trainer_startup";
 	mod[2].multi = true;
 	mod[3].multi = true;
+	mod[4].multi = true;
 
 	// How many scirpts there are.
-	mod_count = 3;
+	mod_count = 4;
 
 }
 
@@ -43,7 +45,7 @@ void MainLevel_Init(void)
 // Multi Level script config.
 void MultiLevel_Init(void)
 {
-	if (item_highlighted == 1)
+	if (item_highlighted == 2)
 	{
 		// The name to display
 		mod[1].name = "Garage Mod Shop 2.0";
@@ -69,15 +71,17 @@ void MultiLevel_Init(void)
 
 		mod_count = 9;
 	}
-	else if (item_highlighted == 2)
+	else if (item_highlighted == 3)
 	{
 		mod[1].name = "XYZH Coords Example";
+		mod[2].name = "Disable Pause Menu";
 
 		mod[1].file = "xyzh_coords_example";
+		mod[2].file = "disable_pause";
 
-		mod_count = 1;
+		mod_count = 2;
 	}
-	else if (item_highlighted == 3)
+	else if (item_highlighted == 4)
 	{
 		mod[1].name = "Disable Police Patrol at Airport";
 		mod[2].name = "Skylift Vehicle Pick Up (L3)";

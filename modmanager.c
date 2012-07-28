@@ -44,6 +44,7 @@ void DoModManager(void)
 
 void main(void)
 {
+	THIS_SCRIPT_IS_SAFE_FOR_NETWORK_GAME();
 	SET_PLAYER_CONTROL(GetPlayerIndex(), false);
 
 	CLEAR_PRINTS();
