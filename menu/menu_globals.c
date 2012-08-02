@@ -7,7 +7,7 @@
  * @author Three-Socks http://psx-scene.com/forums/members/three-socks/
  * @license LICENSE.txt DON'T BE A DICK PUBLIC LICENSE (DBAD)
  *
- * @version 1.1.1
+ * @version 1.2
  */
 
 #include <natives.h>
