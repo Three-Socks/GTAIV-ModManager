@@ -28,14 +28,13 @@ void project_set(void)
 	if (menu_level == 1)
 	{
 		modmanager_addScript("Three-Socks Trainer", "3s_trainer_startup");
-		modmanager_addScript("Dummy script", "doodododo");
 		menu_addItem("Developer Tools");
 
 		return;
 	}
 	else if (menu_level == 2)
 	{
-		if (item_selected == 3)
+		if (item_selected == 2)
 		{
 			modmanager_addScript("XYZH Coords", "xyzh_coords_example");
 			modmanager_addScript("Disable Pause Menu", "disable_pause");
