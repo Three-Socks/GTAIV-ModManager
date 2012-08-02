@@ -1,13 +1,13 @@
 /**
- * GTAIV ModManager V1.2
+ * This file is from ModManager https://bitbucket.org/ThreeSocks/gtaiv-modmanager
  *
- * This file is from: https://bitbucket.org/ThreeSocks/gtaiv-modmanager/
+ * ModManager
  *
- * By Three-Socks
+ * @package menu
+ * @author Three-Socks http://psx-scene.com/forums/members/three-socks/
+ * @license LICENSE.txt DON'T BE A DICK PUBLIC LICENSE (DBAD)
  *
- * Important: Make sure you use the /inc/natives.h with the one included in the IVPS3.Scocl.zip (http://psx-scene.com/forums/f276/%5Btut%5D-how-compile-code-example-scripts-102230/#post963207). 
- * It contains a bug fix that is needed for modmanager to compile correctly.
- *
+ * @version 1.3
  */
 
 #include <natives.h>
@@ -17,50 +17,50 @@
 #include <consts.h>
 
 //#define PC
+#define MAX_MENU_ITEMS 52
+#define MAX_MENU_LEVLS 5
+#define STYLE 2
 
-#include "functions.c"
+// Menu
+#include "menu/menu.h"
 
-void DoModManager(void)
-{
-	HIDE_HUD_AND_RADAR_THIS_FRAME();
-	DRAW_RECT(0.5000, 0.5000, 1.0000, 1.0000, 0, 0, 0, 167);
-	INIT_FRONTEND_HELPER_TEXT();
-	DRAW_FRONTEND_HELPER_TEXT("LEAVE", "INPUT_F_CANCEL", 0);
-	DRAW_FRONTEND_HELPER_TEXT("CONFIRM", "INPUT_F_ACCEPT", 0);
+// ModManager
+#include "modmanager_lang.h"
+#include "modmanager_locals.h"
 
-	float title_y, title_width, title_height;
+#include "modmanager_functions.c"
 
-	if (GET_IS_WIDESCREEN())
-	{
-		title_y = 0.2120, title_width = 0.77999990, title_height = 1.2000;
-	}
-	else
-	{
-		title_y = 0.2180, title_width = 0.6000, title_height = 0.9830;
-	}
+// Project
+#include "project_error.c"
+#include "project_set.c"
+#include "project_action.c"
 
-	draw_title(0.5000, title_y, title_width, title_height, 253, 160, 35, 255, "ModManager 1.2");
-}
+// Menu
+#include "menu/menu_core.c"
 
 void main(void)
 {
-	THIS_SCRIPT_IS_SAFE_FOR_NETWORK_GAME();
-	SET_PLAYER_CONTROL(GetPlayerIndex(), false);
-
-	CLEAR_PRINTS();
-	CLEAR_HELP();
-
-	REQUEST_SCRIPT("modmanager_menu");
-	while (!HAS_SCRIPT_LOADED("modmanager_menu"))
-	{
-		WAIT(0);
-	}
-	START_NEW_SCRIPT("modmanager_menu", 1024);
-	MARK_SCRIPT_AS_NO_LONGER_NEEDED("modmanager_menu");
+	menu_core_startup();
+	draw_startup();
 
 	while(true)
 	{
 		WAIT(0);
-		DoModManager();
+
+		if (!IS_STRING_NULL(load_script) && !script_loaded)
+			load_script_prioritized();
+
+		// Core menu function (Catch button press. Set menu).
+		if (IS_STRING_NULL(load_script))
+			menu_core();
+
+		// Draw background/header/text.
+		drawCurvedWindow();
+
+		// Draw button input.
+		drawFrontend();
+	
+		drawHeader();
+		menu_draw();
 	}
 }
