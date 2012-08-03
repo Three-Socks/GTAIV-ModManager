@@ -25,6 +25,20 @@ void modmanager_addScript(char* item_text, char* item_script)
 	menu_addAction();
 }
 
+void modmanager_toggle_width(void)
+{
+	toggle_pos_x = 0;
+
+	int I;
+	for (I = 1; I <= menu_len; I++)
+	{
+		float strtext_width = GET_STRING_WIDTH_WITH_STRING("STRING", menu_item[I].name);
+
+		if (strtext_width > toggle_pos_x)
+			toggle_pos_x = strtext_width;
+	}
+}
+
 void modmanager_apply(void)
 {
 	if (menu_item[item_selected].extra_val)

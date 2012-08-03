@@ -16,7 +16,7 @@
 #include <types.h>
 #include <consts.h>
 
-//#define PC
+#define PC
 #define MAX_MENU_ITEMS 52
 #define MAX_MENU_LEVLS 5
 #define STYLE 2
@@ -32,6 +32,7 @@
 
 // Project
 #include "project_error.c"
+#include "modmanager_script_config.c"
 #include "project_set.c"
 #include "project_action.c"
 
@@ -55,7 +56,7 @@ void main(void)
 			menu_core();
 
 		// Draw background/header/text.
-		drawCurvedWindow();
+		drawWindow();
 
 		// Draw button input.
 		drawFrontend();

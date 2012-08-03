@@ -24,3 +24,5 @@ char* load_script;
 bool script_loaded, script_requested;
 
 char* modmanager_script[MAX_MENU_ITEMS];
+float modmanager_strwidth[MAX_MENU_ITEMS];
+float edc_width;

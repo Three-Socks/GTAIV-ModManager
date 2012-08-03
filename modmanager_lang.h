@@ -1,6 +1,13 @@
 /**
- * This file is from Three-Socks trainer Project https://bitbucket.org/ThreeSocks/gtaiv-trainer
+ * This file is from ModManager https://bitbucket.org/ThreeSocks/gtaiv-modmanager
  *
+ * ModManager
+ *
+ * @package menu
+ * @author Three-Socks http://psx-scene.com/forums/members/three-socks/
+ * @license LICENSE.txt DON'T BE A DICK PUBLIC LICENSE (DBAD)
+ *
+ * @version 1.3
  */
 
 #pragma once
