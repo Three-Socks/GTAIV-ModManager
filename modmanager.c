@@ -16,7 +16,7 @@
 #include <types.h>
 #include <consts.h>
 
-#define PC
+//#define PC
 #define MAX_MENU_ITEMS 52
 #define MAX_MENU_LEVLS 5
 #define STYLE 2
