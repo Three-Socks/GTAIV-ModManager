@@ -28,7 +28,6 @@ void modmanager_script_config(void)
 	{
 		if (item_selected == 2)
 		{
-			modmanager_addScript("Ribonucleic's Particle Effects Manager", "particlemanager");
 			modmanager_addScript("XYZH Coords", "xyzh_coords_example");
 			modmanager_addScript("Disable Pause Menu", "disable_pause");
 			return;
