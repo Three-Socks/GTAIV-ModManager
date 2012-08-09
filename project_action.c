@@ -16,12 +16,7 @@ void project_doAction(void)
 {
 	menu_items_set = true;
 
-	// Helpers
-	uint num_val_selected = menu_item[item_selected].num_val;
-	uint mainMenu = last_selected[1];
-	uint subMenu = last_selected[2]; 
-
-	if (!script_loaded)
+	if (!script_loaded && !menu_item[item_selected].extra_val)
 		load_script = modmanager_script[item_selected];
 	else
 		modmanager_apply();
